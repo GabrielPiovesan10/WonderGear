@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WonderGear | Tecnologia de Elite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cores extraídas da sua logo WonderGear */
+            --primary: #7c3aed;     /* Roxo */
+            --accent: #db2777;      /* Rosa Neon */
+            --secondary: #f59e0b;   /* Dourado */
+            --dark-bg: #0f172a;     /* Fundo Escuro */
+            --card-bg: #1e293b;     /* Fundo dos Cards */
+            --white: #f8fafc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVEGAÇÃO FIXA */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: auto;
+            filter: drop-shadow(0 0 10px var(--primary));
+            margin-bottom: 2px;
+        }
+
+        .logo-name {
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .menu-tabs {
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu-tabs span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-tabs span.active {
+            color: var(--white);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        /* ANIMAÇÃO DE FLUTUAR */
+        @keyframes flutuar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* SEÇÕES */
+        section {
+            padding: 110px 20px 40px;
+            display: none;
+            min-height: 100vh;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section.active {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PÁGINA DE DESTAQUE */
+        .hero-card { text-align: center; }
+
+        .badge {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        h1 { font-size: 2.2rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
+        h1 span { color: var(--secondary); }
+
+        .main-product-img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 30px;
+            margin: 20px 0;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+            /* AQUI ESTÁ O EFEITO DE FLUTUAR BEM DEVAGAR (4 segundos) */
+            animation: flutuar 4s ease-in-out infinite;
+        }
+
+        .price-container { margin: 25px 0; }
+        .old-price { color: #64748b; text-decoration: line-through; font-size: 1.1rem; }
+        .new-price { font-size: 3rem; font-weight: 900; color: var(--white); display: block; margin-top: -5px; }
+
+        .btn-checkout {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 900;
+            display: block;
+            font-size: 1.2rem;
+            border: none;
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* PÁGINA DE PRODUTOS */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .product-item {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .product-item img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+
+        .product-item h3 { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 5px; }
+        .product-item p { color: var(--secondary); font-weight: 900; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.75rem;
+            color: #475569;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-box" onclick="irPara('destaque')">
+            <img src="logo.PNG" alt="WG" class="logo-img">
+            <div class="logo-name">WonderGear</div>
+        </div>
+        <div class="menu-tabs">
+            <span id="tab-destaque" class="active" onclick="irPara('destaque')">Destaque</span>
+            <span id="tab-loja" onclick="irPara('loja')">Produtos</span>
+        </div>
+    </nav>
+
+    <section id="destaque" class="active">
+        <div class="hero-card">
+            <div class="badge">Power Bank</div>
+            <h1>Energia que <span>não acaba.</span></h1>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Power Bank 50.000mAh. Até 8 recargas para você nunca ficar desconectado.</p>
+            
+            <img src="produto.PNG" class="main-product-img" alt="Power Bank">
+
+            <div class="price-container">
+                <span class="old-price">R$ 299,90</span>
+                <span class="new-price">R$ 169,90</span>
+                <p style="color: #22c55e; font-weight: bold; font-size: 0.8rem;">📦 FRETE GRÁTIS PARA CORDEIRÓPOLIS</p>
+            </div>
+
+            <button class="btn-checkout" onclick="alert('Indo para o Pagamento Seguro...')">Quero o meu agora</button>
+        </div>
+    </section>
+
+    <section id="loja">
+        <h2 style="text-align: center; margin-bottom: 30px; font-weight: 900;">Catálogo WonderGear</h2>
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977730f90?q=80&w=300">
+                <h3>Cabo USB-C Pro</h3>
+                <p>R$ 49,90</p>
+            </div>
+            <div class="product-item">
+                <img src="https://images.unsplash.com/photo-1606229365485-93a3b8ee0d25?q=80&w=300">
+                <h3>Fonte Turbo 20W</h3>
+                <p>R$ 89,90</p>
+            </div>
+            <div class="product-item">
+                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?q=80&w=300">
+                <h3>Capa Elite</h3>
+                <p>R$ 57,00</p>
+            </div>
+            <div class="product-item">
+                <img src="https://images.unsplash.com/photo-1541140532154-b024d715b909?q=80&w=300">
+                <h3>Película Glass</h3>
+                <p>R$ 25,00</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 WonderGear Brasil. Site 100% Seguro.</p>
+    </footer>
+
+    <script>
+        function irPara(sessaoId) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.menu-tabs span').forEach(t => t.classList.remove('active'));
+            document.getElementById(sessaoId).classList.add('active');
+            if(sessaoId === 'destaque') {
+                document.getElementById('tab-destaque').classList.add('active');
+            } else {
+                document.getElementById('tab-loja').classList.add('active');
+            }
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
