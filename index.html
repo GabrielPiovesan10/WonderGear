@@ -89,10 +89,26 @@
             text-align: center; border: 1px solid rgba(255,255,255,0.03);
             display: flex; flex-direction: column; justify-content: space-between;
         }
-        .product-item img { width: 100%; border-radius: 15px; margin-bottom: 10px; height: 120px; object-fit: cover; }
-        .product-item h3 { font-size: 0.8rem; color: #cbd5e1; margin-bottom: 5px; height: 40px; overflow: hidden; }
+        .product-item img { width: 100%; border-radius: 15px; margin-bottom: 10px; height: 120px; object-fit: cover; cursor: pointer; }
+        .product-item h3 { font-size: 0.8rem; color: #cbd5e1; margin-bottom: 5px; height: 40px; overflow: hidden; cursor: pointer; }
         .product-item p { color: var(--secondary); font-weight: 900; margin-bottom: 10px; }
         .btn-buy { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; }
+
+        /* MODAL DE DESCRIÇÃO */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 3000;
+            justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-content {
+            background: var(--card-bg); width: 100%; max-width: 500px;
+            border-radius: 30px; padding: 30px; position: relative;
+            animation: modalIn 0.3s ease-out; border: 1px solid rgba(255,255,255,0.1);
+        }
+        @keyframes modalIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #64748b; cursor: pointer; }
+        .modal-img { width: 100%; border-radius: 20px; margin-bottom: 20px; }
+        .modal-desc { font-size: 0.9rem; color: #cbd5e1; margin: 15px 0 25px; }
 
         /* WHATSAPP FLOAT */
         .whatsapp-btn {
@@ -118,13 +134,24 @@
         </div>
     </nav>
 
+    <div id="modal-produto" class="modal" onclick="fecharModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="fecharModal()">&times;</span>
+            <img id="modal-img" src="" class="modal-img">
+            <h2 id="modal-titulo" style="font-weight: 900;"></h2>
+            <p id="modal-preco" style="color: var(--secondary); font-weight: 900; font-size: 1.5rem;"></p>
+            <div id="modal-desc" class="modal-desc"></div>
+            <button id="modal-btn" class="btn-checkout">Comprar Agora</button>
+        </div>
+    </div>
+
     <section id="destaque" class="active">
         <div class="hero-card">
             <div class="badge">Power Bank Elite</div>
             <h1>Energia que <span>não acaba.</span></h1>
             <p style="color: #94a3b8; font-size: 0.9rem;">Power Bank 50.000mAh. Ideal para viagens e trabalho intenso.</p>
             
-            <img src="produto.PNG" class="main-product-img" alt="Power Bank" onerror="this.src='https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?q=80&w=400'">
+            <img src="produto.PNG" class="main-product-img" alt="Power Bank" onclick="abrirDestaque()" style="cursor: pointer;">
 
             <div class="price-container">
                 <span class="old-price">R$ 299,90</span>
@@ -138,8 +165,7 @@
 
     <section id="loja">
         <h2 style="text-align: center; margin-bottom: 30px; font-weight: 900;">Tecnologia de Elite</h2>
-        <div class="product-grid" id="grid-produtos">
-            </div>
+        <div class="product-grid" id="grid-produtos"></div>
     </section>
 
     <a href="https://wa.me/5519993405480?text=Olá%20WonderGear!%20Estou%20com%20uma%20dúvida." target="_blank" class="whatsapp-btn">
@@ -147,11 +173,10 @@
     </a>
 
     <footer>
-        <p>&copy; 2026 WonderGear Brasil. <br> Pagamentos seguros via PagSeguro.</p>
+        <p>&copy; 2026 WonderGear Brasil. <br> Pagamentos seguros via PagSeguro/InfinitePay.</p>
     </footer>
 
     <script>
-        // Função para mudar de aba
         function irPara(id) {
             document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.menu-tabs span').forEach(t => t.classList.remove('active'));
@@ -160,44 +185,78 @@
             window.scrollTo(0, 0);
         }
 
-        // BANCO DE DADOS - ADICIONE SEUS LINKS AQUI
+        // BANCO DE DADOS ATUALIZADO COM DESCRIÇÕES
         const produtos = [
             {
-                nome: 'Projetor HY300 Portátil Smart Android 11 4K Ultra HD HDMI Wifi Bluetooth',
+                nome: 'Projetor HY300 Portátil Smart Android 11 4K',
                 preco: 230.00,
-                img: 'produto_shopee.JPG', // Lembre de salvar a foto com esse nome
+                desc: 'Transforme seu quarto em um cinema! Projetor com Android 11, resolução 4K, Wi-Fi e Bluetooth. Imagem nítida de até 130 polegadas.',
+                img: 'produto_shopee.JPG',
                 link: 'https://invoice.infinitepay.io/wondergear/lWENlMIUz'
             },
             {
                 nome: 'Fonte Turbo 20W Original',
                 preco: 89.90,
+                desc: 'Carregamento ultra rápido para seu smartphone. Tecnologia inteligente que não vicia a bateria.',
                 img: 'https://images.unsplash.com/photo-1606229365485-93a3b8ee0d25?q=80&w=300',
                 link: 'https://pagseguro.uol.com.br/LINK_FONTE'
             },
             {
                 nome: 'Fone TWS Air Pro 3',
                 preco: 129.00,
+                desc: 'Qualidade de áudio Premium com cancelamento de ruído. Bateria de longa duração e conexão instantânea Bluetooth 5.3.',
                 img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=300',
                 link: 'https://pagseguro.uol.com.br/LINK_FONE'
             },
             {
                 nome: 'Película Cerâmica 9D',
                 preco: 25.00,
+                desc: 'A proteção definitiva! Flexível, não quebra e protege contra riscos e quedas extremas.',
                 img: 'https://images.unsplash.com/photo-1541140532154-b024d715b909?q=80&w=300',
                 link: 'https://pagseguro.uol.com.br/LINK_PELICULA'
             }
         ];
 
-        // Renderiza os produtos na tela
+        function abrirModal(index) {
+            const p = produtos[index];
+            document.getElementById('modal-img').src = p.img;
+            document.getElementById('modal-titulo').innerText = p.nome;
+            document.getElementById('modal-preco').innerText = `R$ ${p.preco.toFixed(2).replace('.', ',')}`;
+            document.getElementById('modal-desc').innerText = p.desc;
+            document.getElementById('modal-btn').onclick = () => window.open(p.link, '_blank');
+            document.getElementById('modal-produto').style.display = 'flex';
+        }
+
+        function abrirDestaque() {
+            // Abre a descrição do produto principal (Power Bank)
+            const powerBank = {
+                nome: 'Power Bank Elite 50.000mAh',
+                preco: 169.90,
+                desc: 'Capacidade real para carregar seu celular até 10 vezes. Possui lanterna LED e carregamento rápido para 3 aparelhos ao mesmo tempo.',
+                img: 'produto.PNG',
+                link: 'https://pagseguro.uol.com.br/LINK_DO_POWERBANK'
+            };
+            document.getElementById('modal-img').src = powerBank.img;
+            document.getElementById('modal-titulo').innerText = powerBank.nome;
+            document.getElementById('modal-preco').innerText = `R$ ${powerBank.preco.toFixed(2).replace('.', ',')}`;
+            document.getElementById('modal-desc').innerText = powerBank.desc;
+            document.getElementById('modal-btn').onclick = () => window.open(powerBank.link, '_blank');
+            document.getElementById('modal-produto').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-produto').style.display = 'none';
+        }
+
         function renderizar() {
             const grid = document.getElementById('grid-produtos');
-            grid.innerHTML = ''; // Limpa antes de carregar
-            produtos.forEach(p => {
+            grid.innerHTML = '';
+            produtos.forEach((p, index) => {
                 grid.innerHTML += `
                     <div class="product-item">
-                        <img src="${p.img}" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/150/1e293b/white?text=WonderGear'">
+                        <img src="${p.img}" alt="${p.nome}" onclick="abrirModal(${index})" onerror="this.src='https://via.placeholder.com/150/1e293b/white?text=WonderGear'">
                         <div>
-                            <h3>${p.nome}</h3>
+                            <h3 onclick="abrirModal(${index})">${p.nome}</h3>
                             <p>R$ ${p.preco.toFixed(2).replace('.', ',')}</p>
                             <button class="btn-buy" onclick="window.open('${p.link}', '_blank')">Comprar</button>
                         </div>
