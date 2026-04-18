@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVEGAÇÃO CENTRALIZADA (LOGO NO TOPO, MENUS EMBAIXO) --- */
+        /* --- NAVEGAÇÃO CENTRALIZADA --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -39,19 +39,19 @@
             align-items: center;
             gap: 15px; 
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .logo-box { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-        .logo-img { width: 40px; filter: drop-shadow(0 0 10px var(--primary)); }
+        .logo-img { width: 40px; margin-bottom: 5px; filter: drop-shadow(0 0 10px var(--primary)); }
         .logo-name {
-            font-weight: 900; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;
-            background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+            font-weight: 900; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .menu-tabs { display: flex; gap: 15px; }
-        .menu-tabs span { font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; cursor: pointer; }
+        .menu-tabs { display: flex; gap: 5px; width: 100%; justify-content: center; }
+        .menu-tabs span { font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; cursor: pointer; padding: 8px 12px; transition: 0.3s; }
         .menu-tabs span.active { color: var(--white); border-bottom: 2px solid var(--primary); }
 
         section { padding: 180px 20px 40px; display: none; min-height: 100vh; max-width: 600px; margin: 0 auto; }
@@ -89,7 +89,7 @@
         }
         .product-item img { width: 100%; border-radius: 15px; margin-bottom: 10px; height: 120px; object-fit: cover; }
 
-        /* MODAL */
+        /* --- MODAL MELHORADO (KARD) --- */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 3000;
@@ -97,11 +97,24 @@
         }
         .modal-content {
             background: var(--card-bg); width: 100%; max-width: 450px;
-            border-radius: 30px; padding: 25px; position: relative;
-            border: 1px solid rgba(255,255,255,0.1); overflow-y: auto; max-height: 90vh;
+            border-radius: 35px; padding: 30px; position: relative;
+            border: 1px solid rgba(255,255,255,0.1); 
+            overflow-y: auto; max-height: 90vh;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(124, 58, 237, 0.1);
         }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #64748b; cursor: pointer; }
-        
+        /* Botão de fechar melhorado */
+        .close-modal { 
+            position: absolute; top: 15px; right: 15px; 
+            width: 35px; height: 35px; 
+            background: rgba(15, 23, 42, 0.8); 
+            border-radius: 50%; display: flex; 
+            justify-content: center; align-items: center; 
+            color: white; font-size: 1.5rem; cursor: pointer; 
+            z-index: 10; border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .close-modal:hover { background: var(--accent); }
+
         .selector-group { margin: 15px 0; text-align: left; }
         .selector-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; }
         .selector-group select {
@@ -109,24 +122,8 @@
             border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-weight: 600;
         }
 
-        /* --- SEÇÃO HISTÓRIA --- */
-        .story-box {
-            background: linear-gradient(145deg, var(--card-bg), #111827);
-            padding: 40px 25px; border-radius: 35px;
-            border: 1px solid rgba(124, 58, 237, 0.1);
-            position: relative; overflow: hidden;
-        }
-        .story-box::before {
-            content: ''; position: absolute; top: -50px; right: -50px;
-            width: 100px; height: 100px; background: var(--primary);
-            filter: blur(80px); opacity: 0.3;
-        }
-        .story-box h2 { font-size: 1.8rem; margin-bottom: 20px; color: var(--white); }
-        .story-text { color: #94a3b8; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; text-align: left; }
-        .story-highlight { color: var(--secondary); font-weight: 700; }
-
-        /* --- TRUST SECTION --- */
-        .trust-section {
+        /* --- SEGURANÇA ORIGINAL --- */
+        .security-footer {
             margin: 20px auto 40px; 
             padding: 25px;
             max-width: 600px;
@@ -135,10 +132,7 @@
             border: 1px dashed rgba(255,255,255,0.1);
             display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
         }
-        .trust-item {
-            display: flex; flex-direction: column; align-items: center;
-            text-align: center; gap: 8px;
-        }
+        .trust-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
         .trust-icon { font-size: 1.5rem; filter: drop-shadow(0 0 5px var(--success)); }
         .trust-label { font-size: 0.65rem; font-weight: 800; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; }
         .trust-sub { font-size: 0.55rem; color: #64748b; }
@@ -169,7 +163,7 @@
     <div id="modal-produto" class="modal" onclick="fecharModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="fecharModal()">&times;</span>
-            <img id="modal-img" src="" style="width:100%; border-radius:20px; margin-bottom:15px;">
+            <img id="modal-img" src="" style="width:100%; border-radius:25px; margin-bottom:15px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">
             <h2 id="modal-titulo" style="font-weight: 900; font-size: 1.3rem;"></h2>
             <p id="modal-preco" style="color: var(--secondary); font-weight: 900; font-size: 1.8rem; margin: 10px 0;"></p>
             <div id="opcoes-produto"></div> 
@@ -194,35 +188,18 @@
     </section>
 
     <section id="sobre">
-        <div class="story-box">
-            <h2>Nossa Jornada</h2>
-            <p class="story-text">A <span class="story-highlight">WonderGear</span> não é apenas uma loja; é a concretização de uma visão compartilhada. Fundada em 2026 pelo casal <span class="story-highlight">Gabriel e Welia</span>, nossa marca nasceu da vontade de conectar pessoas a acessórios que definem o futuro.</p>
-            <p class="story-text">Localizada em Cordeirópolis, operamos com uma curadoria rigorosa. Cada item em nosso catálogo foi testado e aprovado por nós, garantindo que você receba tecnologia de elite com a confiança de quem entende do assunto.</p>
-            <p class="story-text">Para nós, cada cliente é parte da família WonderGear. <span class="story-highlight">Inovação, transparência e exclusividade</span> são os pilares que nos movem todos os dias.</p>
+        <h2 style="text-align: center; margin-bottom: 30px; font-weight: 900;">Nossa História</h2>
+        <div style="background: var(--card-bg); padding: 30px; border-radius: 30px;">
+            <p style="margin-bottom: 20px; color: #94a3b8;">A <strong>WonderGear</strong> nasceu em 2026 pelo casal <strong>Gabriel e Welia</strong>. Unimos nossa paixão por tecnologia para trazer o que há de mais moderno em acessórios de elite para Cordeirópolis.</p>
+            <p style="color: #94a3b8;">Trabalhamos com seriedade e entrega garantida para que você tenha sempre a melhor experiência digital.</p>
         </div>
     </section>
 
     <div class="trust-section">
-        <div class="trust-item">
-            <span class="trust-icon">🛡️</span>
-            <span class="trust-label">Site Blindado</span>
-            <span class="trust-sub">SSL 256-bit</span>
-        </div>
-        <div class="trust-item">
-            <span class="trust-icon">💎</span>
-            <span class="trust-label">Qualidade Elite</span>
-            <span class="trust-sub">Selecionados</span>
-        </div>
-        <div class="trust-item">
-            <span class="trust-icon">🚀</span>
-            <span class="trust-label">Entrega Rápida</span>
-            <span class="trust-sub">Monitorada</span>
-        </div>
-        <div class="trust-item">
-            <span class="trust-icon">💳</span>
-            <span class="trust-label">Compra Segura</span>
-            <span class="trust-sub">InfinitePay</span>
-        </div>
+        <div class="trust-item"><span class="trust-icon">🛡️</span><span class="trust-label">Site Blindado</span><span class="trust-sub">SSL 256-bit</span></div>
+        <div class="trust-item"><span class="trust-icon">💎</span><span class="trust-label">Qualidade Elite</span><span class="trust-sub">Selecionados</span></div>
+        <div class="trust-item"><span class="trust-icon">🚀</span><span class="trust-label">Entrega Rápida</span><span class="trust-sub">Monitorada</span></div>
+        <div class="trust-item"><span class="trust-icon">💳</span><span class="trust-label">Compra Segura</span><span class="trust-sub">InfinitePay</span></div>
     </div>
 
     <a href="https://wa.me/5519993405480" class="whatsapp-btn"><span style="color:white">💬</span></a>
@@ -312,10 +289,10 @@
             const pb = { 
                 nome: 'Power Bank Elite 50k mAh', 
                 preco: 169.90, 
-                desc: 'Nunca mais fique sem bateria na estrada ou no trabalho. Com capacidade massiva de 50.000mAh, este Power Bank carrega seu smartphone até 10 vezes. Possui visor digital inteligente de carga, lanterna de emergência potente e 3 saídas USB para carregar múltiplos aparelhos em simultâneo com tecnologia Fast Charge.', 
+                desc: 'Energia infinita para sua jornada. Com impressionantes 50.000mAh, este power bank carrega seu smartphone até 10 vezes. Possui visor digital inteligente de carga, lanterna de emergência potente e 3 saídas USB para carregar múltiplos aparelhos em simultâneo com tecnologia Fast Charge.', 
                 img: 'produto.PNG', 
                 link: '#', 
-                cores: ['branco'] 
+                cores: ['Branco'] 
             };
             document.getElementById('modal-img').src = pb.img;
             document.getElementById('modal-titulo').innerText = pb.nome;
