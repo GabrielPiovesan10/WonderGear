@@ -14,6 +14,7 @@
             --card-bg: #1e293b;
             --white: #f8fafc;
             --success: #22c55e;
+            --trust-bg: #161e2e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -38,43 +39,20 @@
             align-items: center;
             gap: 15px; 
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo-box { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            cursor: pointer; 
-        }
-        .logo-img { width: 40px; margin-bottom: 5px; filter: drop-shadow(0 0 10px var(--primary)); }
+        .logo-box { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .logo-img { width: 40px; filter: drop-shadow(0 0 10px var(--primary)); }
         .logo-name {
-            font-weight: 900; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
+            font-weight: 900; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .menu-tabs { 
-            display: flex; 
-            gap: 5px; 
-            width: 100%;
-            justify-content: center;
-        }
-        
-        .menu-tabs span { 
-            font-size: 0.75rem; 
-            font-weight: 800; 
-            color: #64748b; 
-            text-transform: uppercase; 
-            cursor: pointer; 
-            padding: 8px 12px;
-            transition: 0.3s;
-        }
-        
-        .menu-tabs span.active { 
-            color: var(--white); 
-            border-bottom: 2px solid var(--primary);
-        }
+        .menu-tabs { display: flex; gap: 15px; }
+        .menu-tabs span { font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; cursor: pointer; }
+        .menu-tabs span.active { color: var(--white); border-bottom: 2px solid var(--primary); }
 
         section { padding: 180px 20px 40px; display: none; min-height: 100vh; max-width: 600px; margin: 0 auto; }
         section.active { display: block; animation: slideUp 0.5s ease; }
@@ -83,22 +61,22 @@
 
         .hero-card { text-align: center; }
         .badge { background: rgba(124, 58, 237, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(124, 58, 237, 0.2); }
-        h1 { font-size: 2rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
+        h1 { font-size: 2.2rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
         h1 span { color: var(--secondary); }
 
         .main-product-img {
-            width: 100%; max-width: 300px; border-radius: 30px; margin: 20px 0;
+            width: 100%; max-width: 320px; border-radius: 30px; margin: 20px 0;
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
             animation: flutuar 4s ease-in-out infinite;
         }
-        @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .new-price { font-size: 2.8rem; font-weight: 900; color: var(--white); display: block; }
+        .new-price { font-size: 3rem; font-weight: 900; color: var(--white); display: block; }
 
         .btn-checkout {
             background: linear-gradient(90deg, var(--primary), var(--accent));
             color: white; padding: 18px; border-radius: 15px; text-decoration: none;
-            font-weight: 900; display: block; font-size: 1rem; border: none;
+            font-weight: 900; display: block; font-size: 1.1rem; border: none;
             text-transform: uppercase; cursor: pointer; width: 100%;
             box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3); margin-top: 15px;
         }
@@ -109,8 +87,9 @@
             text-align: center; border: 1px solid rgba(255,255,255,0.03);
             display: flex; flex-direction: column; justify-content: space-between;
         }
-        .product-item img { width: 100%; border-radius: 12px; margin-bottom: 10px; height: 120px; object-fit: cover; }
+        .product-item img { width: 100%; border-radius: 15px; margin-bottom: 10px; height: 120px; object-fit: cover; }
 
+        /* MODAL */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 3000;
@@ -127,36 +106,50 @@
         .selector-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; }
         .selector-group select {
             width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155;
-            border-radius: 10px; color: white; font-weight: 600;
+            border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-weight: 600;
         }
 
-        /* --- NEGÓCIO DE SEGURANÇA ORIGINAL --- */
-        .security-footer {
-            margin: 20px auto 20px; 
+        /* --- SEÇÃO HISTÓRIA --- */
+        .story-box {
+            background: linear-gradient(145deg, var(--card-bg), #111827);
+            padding: 40px 25px; border-radius: 35px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            position: relative; overflow: hidden;
+        }
+        .story-box::before {
+            content: ''; position: absolute; top: -50px; right: -50px;
+            width: 100px; height: 100px; background: var(--primary);
+            filter: blur(80px); opacity: 0.3;
+        }
+        .story-box h2 { font-size: 1.8rem; margin-bottom: 20px; color: var(--white); }
+        .story-text { color: #94a3b8; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; text-align: left; }
+        .story-highlight { color: var(--secondary); font-weight: 700; }
+
+        /* --- TRUST SECTION --- */
+        .trust-section {
+            margin: 20px auto 40px; 
+            padding: 25px;
             max-width: 600px;
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px;
-            padding: 20px; 
-            background: rgba(30, 41, 59, 0.5); 
-            border-radius: 20px;
+            background: var(--trust-bg);
+            border-radius: 25px;
+            border: 1px dashed rgba(255,255,255,0.1);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
         }
-        .badge-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            font-size: 0.6rem; 
-            color: #94a3b8; 
-            font-weight: 700; 
+        .trust-item {
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; gap: 8px;
         }
+        .trust-icon { font-size: 1.5rem; filter: drop-shadow(0 0 5px var(--success)); }
+        .trust-label { font-size: 0.65rem; font-weight: 800; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; }
+        .trust-sub { font-size: 0.55rem; color: #64748b; }
 
         .whatsapp-btn {
             position: fixed; bottom: 20px; right: 20px; background: #25d366;
-            width: 55px; height: 55px; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; font-size: 1.8rem; z-index: 2000;
+            width: 60px; height: 60px; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; font-size: 2rem; z-index: 2000;
         }
 
-        footer { text-align: center; padding: 0 20px 80px; font-size: 0.7rem; color: #475569; }
+        footer { text-align: center; padding: 0 20px 80px; font-size: 0.7rem; color: #475569; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -180,7 +173,7 @@
             <h2 id="modal-titulo" style="font-weight: 900; font-size: 1.3rem;"></h2>
             <p id="modal-preco" style="color: var(--secondary); font-weight: 900; font-size: 1.8rem; margin: 10px 0;"></p>
             <div id="opcoes-produto"></div> 
-            <div id="modal-desc" style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 20px; line-height: 1.5;"></div>
+            <div id="modal-desc" style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 20px; line-height: 1.6;"></div>
             <button id="modal-btn" class="btn-checkout">Garantir Agora</button>
         </div>
     </div>
@@ -191,7 +184,7 @@
             <h1>Tecnologia que <span>eleva o nível.</span></h1>
             <img src="produto.PNG" class="main-product-img" onclick="abrirDestaque()" style="cursor:pointer">
             <div class="new-price">R$ 169,90</div>
-            <button class="btn-checkout" onclick="abrirDestaque()">Ver Detalhes</button>
+            <button class="btn-checkout" onclick="abrirDestaque()">Explorar Produto</button>
         </div>
     </section>
 
@@ -201,25 +194,42 @@
     </section>
 
     <section id="sobre">
-        <h2 style="text-align: center; margin-bottom: 30px; font-weight: 900;">Nossa História</h2>
-        <div style="background: var(--card-bg); padding: 30px; border-radius: 30px;">
-            <p style="margin-bottom: 20px; color: #94a3b8;">A <strong>WonderGear</strong> nasceu em 2026 pelo casal <strong>Gabriel e Welia</strong>. Unimos nossa paixão por tecnologia para trazer o que há de mais moderno em acessórios de elite para Cordeirópolis.</p>
-            <p style="color: #94a3b8;">Trabalhamos com seriedade e entrega garantida para que você tenha sempre a melhor experiência digital.</p>
+        <div class="story-box">
+            <h2>Nossa Jornada</h2>
+            <p class="story-text">A <span class="story-highlight">WonderGear</span> não é apenas uma loja; é a concretização de uma visão compartilhada. Fundada em 2026 pelo casal <span class="story-highlight">Gabriel e Welia</span>, nossa marca nasceu da vontade de conectar pessoas a acessórios que definem o futuro.</p>
+            <p class="story-text">Localizada em Cordeirópolis, operamos com uma curadoria rigorosa. Cada item em nosso catálogo foi testado e aprovado por nós, garantindo que você receba tecnologia de elite com a confiança de quem entende do assunto.</p>
+            <p class="story-text">Para nós, cada cliente é parte da família WonderGear. <span class="story-highlight">Inovação, transparência e exclusividade</span> são os pilares que nos movem todos os dias.</p>
         </div>
     </section>
 
-    <div class="security-footer">
-        <div class="badge-item"><span>🔒</span> SITE SEGURO</div>
-        <div class="badge-item"><span>✅</span> ORIGINAL</div>
-        <div class="badge-item"><span>📦</span> GARANTIA</div>
-        <div class="badge-item"><span>⚡</span> INFINITEPAY</div>
+    <div class="trust-section">
+        <div class="trust-item">
+            <span class="trust-icon">🛡️</span>
+            <span class="trust-label">Site Blindado</span>
+            <span class="trust-sub">SSL 256-bit</span>
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">💎</span>
+            <span class="trust-label">Qualidade Elite</span>
+            <span class="trust-sub">Selecionados</span>
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">🚀</span>
+            <span class="trust-label">Entrega Rápida</span>
+            <span class="trust-sub">Monitorada</span>
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">💳</span>
+            <span class="trust-label">Compra Segura</span>
+            <span class="trust-sub">InfinitePay</span>
+        </div>
     </div>
 
     <a href="https://wa.me/5519993405480" class="whatsapp-btn"><span style="color:white">💬</span></a>
 
     <footer>
         <p>WONDERGEAR BRASIL &copy; 2026</p>
-        <p style="opacity: 0.5; margin-top: 5px;">Gabriel & Welia</p>
+        <p style="opacity: 0.5; margin-top: 5px;">Powered by Gabriel & Welia</p>
     </footer>
 
     <script>
@@ -235,7 +245,7 @@
             {
                 nome: 'Projetor HY300 Smart Android 11 4K',
                 preco: 230.00,
-                desc: 'Transforme qualquer parede em um cinema 4K. Equipado com Android 11 nativo, permite instalar apps como Netflix e YouTube direto no aparelho. Possui conexão Wi-Fi, Bluetooth e projeção nítida de até 130 polegadas. O acessório definitivo para quem busca entretenimento de alta qualidade.',
+                desc: 'Transforme qualquer ambiente em um cinema de alta definição. O Projetor HY300 possui Android 11 nativo (instale apps como Netflix e YouTube), resolução 4K, Wi-Fi 6 de ultra velocidade e Bluetooth 5.0. Com projeção nítida de até 130 polegadas e ajuste de ângulo flexível, é a elite do entretenimento portátil.',
                 img: 'produto_shopee.JPG',
                 link: 'https://invoice.infinitepay.io/wondergear/lWENlMIUz',
                 cores: ['Branco']
@@ -243,7 +253,7 @@
             {
                 nome: 'Cabo USB-C Turbo 60W Elite',
                 preco: 37.00,
-                desc: 'Força bruta e velocidade. Este cabo de 60W foi projetado para carregamento ultra rápido de smartphones e até notebooks. Construído com material reforçado de alta durabilidade, suporta dobras e uso intenso sem perder a performance. Segurança e eficiência em um só acessório.',
+                desc: 'Potência máxima para seus dispositivos mais exigentes. Este cabo de 60W permite o carregamento ultra rápido de smartphones, tablets e até notebooks compatíveis. Construído com blindagem reforçada e conectores premium, garante transferência de dados estável e segurança total contra sobreaquecimento.',
                 img: 'cabo.JPG',
                 link: '#',
                 cores: ['Preto', 'Branco'],     
@@ -252,7 +262,7 @@
             {
                 nome: 'Escova 8 em 1 Multifuncional',
                 preco: 30.00,
-                desc: 'Mantenha seu setup impecável. Kit completo para limpeza profunda de teclados mecânicos, fones de ouvido (AirPods), telas de celular e monitores. Compacto e ergonômico, remove poeira e sujeira dos cantos mais difíceis, preservando a vida útil dos seus eletrônicos.',
+                desc: 'A ferramenta definitiva para quem cuida do setup. Este kit portátil 8 em 1 limpa com precisão teclados mecânicos, fones de ouvido, telas de smartphones e câmeras. Inclui extrator de teclas e escovas de alta densidade que removem até a poeira mais difícil sem riscar seus equipamentos.',
                 img: 'escova.JPG',
                 link: '#',
                 cores: ['Cor Aleatória']
@@ -260,7 +270,7 @@
             {
                 nome: 'Cabo OTG USB para iOS Lightning',
                 preco: 27.00,
-                desc: 'Aumente o poder do seu iPhone ou iPad. Com este cabo OTG, você conecta pen drives, teclados ou mouses instantaneamente via plug-and-play. Ideal para transferir fotos rapidamente ou transformar seu dispositivo em uma estação de trabalho móvel.',
+                desc: 'Expanda instantaneamente as capacidades do seu iPhone ou iPad. Com este cabo OTG, você pode conectar pen drives para transferir fotos, usar teclados externos ou até conectar periféricos USB direto no sistema iOS. Alta velocidade de leitura e design ultra resistente.',
                 img: 'otg.JPG',
                 link: '#',
                 cores: ['Branco']
@@ -268,7 +278,7 @@
             {
                 nome: 'Suporte Elite Dobrável',
                 preco: 25.00,
-                desc: 'Ergonomia e estilo para sua mesa. Suporte totalmente articulado e dobrável, compatível com todos os modelos de celulares e tablets. Perfeito para videochamadas, estudos ou para assistir suas séries favoritas na altura ideal, evitando dores no pescoço.',
+                desc: 'Ergonomia absoluta em um design compacto. Produzido em material premium com base antiderrapante, este suporte é totalmente dobrável e ajustável em múltiplos ângulos. Ideal para videochamadas, estudos ou lazer, garantindo que seu celular ou tablet fique estável e na altura perfeita para sua visão.',
                 img: 'suporte.JPG',
                 link: '#',
                 cores: ['Preto', 'Branco', 'Rosa', 'Azul']
@@ -302,10 +312,10 @@
             const pb = { 
                 nome: 'Power Bank Elite 50k mAh', 
                 preco: 169.90, 
-                desc: 'Energia infinita para sua jornada. Com impressionantes 50.000mAh, este power bank carrega seu smartphone até 10 vezes. Possui visor digital inteligente que mostra a carga exata, lanterna LED integrada e múltiplas saídas para carregar vários aparelhos ao mesmo tempo com tecnologia turbo.', 
+                desc: 'Nunca mais fique sem bateria na estrada ou no trabalho. Com capacidade massiva de 50.000mAh, este Power Bank carrega seu smartphone até 10 vezes. Possui visor digital inteligente de carga, lanterna de emergência potente e 3 saídas USB para carregar múltiplos aparelhos em simultâneo com tecnologia Fast Charge.', 
                 img: 'produto.PNG', 
                 link: '#', 
-                cores: ['Branco'] 
+                cores: ['branco'] 
             };
             document.getElementById('modal-img').src = pb.img;
             document.getElementById('modal-titulo').innerText = pb.nome;
