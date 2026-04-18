@@ -305,8 +305,19 @@
             document.getElementById('modal-titulo').innerText = pb.nome;
             document.getElementById('modal-preco').innerText = `R$ ${pb.preco.toFixed(2).replace('.', ',')}`;
             document.getElementById('modal-desc').innerText = pb.desc;
-            document.getElementById('opcoes-produto').innerHTML = `<div class="selector-group"><label>Cor:</label><select><option>Branco</option></select></div>`;
             document.getElementById('modal-btn').onclick = () => window.open(pb.link, '_blank');
+
+            // AJUSTE DINÂMICO DE CORES AQUI:
+            let htmlOpcoes = '';
+            if (pb.cores && pb.cores.length > 0) {
+                htmlOpcoes += `<div class="selector-group"><label>Cor:</label><select>`;
+                pb.cores.forEach(cor => {
+                    htmlOpcoes += `<option value="${cor}">${cor}</option>`;
+                });
+                htmlOpcoes += `</select></div>`;
+            }
+            document.getElementById('opcoes-produto').innerHTML = htmlOpcoes;
+
             document.getElementById('modal-produto').style.display = 'flex';
         }
 
