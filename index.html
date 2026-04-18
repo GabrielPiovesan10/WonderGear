@@ -14,7 +14,6 @@
             --card-bg: #1e293b;
             --white: #f8fafc;
             --success: #22c55e;
-            --trust-bg: #161e2e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -27,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVEGAÇÃO CENTRALIZADA --- */
+        /* --- NAVEGAÇÃO CENTRALIZADA (LOGO NO TOPO, MENUS EMBAIXO) --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -89,7 +88,7 @@
         }
         .product-item img { width: 100%; border-radius: 15px; margin-bottom: 10px; height: 120px; object-fit: cover; }
 
-        /* --- MODAL MELHORADO (KARD) --- */
+        /* MODAL */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 3000;
@@ -98,11 +97,8 @@
         .modal-content {
             background: var(--card-bg); width: 100%; max-width: 450px;
             border-radius: 35px; padding: 30px; position: relative;
-            border: 1px solid rgba(255,255,255,0.1); 
-            overflow-y: auto; max-height: 90vh;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(255,255,255,0.1); overflow-y: auto; max-height: 90vh;
         }
-        /* Botão de fechar melhorado */
         .close-modal { 
             position: absolute; top: 15px; right: 15px; 
             width: 35px; height: 35px; 
@@ -111,9 +107,7 @@
             justify-content: center; align-items: center; 
             color: white; font-size: 1.5rem; cursor: pointer; 
             z-index: 10; border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
         }
-        .close-modal:hover { background: var(--accent); }
 
         .selector-group { margin: 15px 0; text-align: left; }
         .selector-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; }
@@ -122,20 +116,25 @@
             border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-weight: 600;
         }
 
-        /* --- SEGURANÇA ORIGINAL --- */
+        /* --- SEGURANÇA ORIGINAL (GRID 2 COLUNAS) --- */
         .security-footer {
             margin: 20px auto 40px; 
-            padding: 25px;
             max-width: 600px;
-            background: var(--trust-bg);
-            border-radius: 25px;
-            border: 1px dashed rgba(255,255,255,0.1);
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px;
+            padding: 20px; 
+            background: rgba(30, 41, 59, 0.5); 
+            border-radius: 20px;
         }
-        .trust-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
-        .trust-icon { font-size: 1.5rem; filter: drop-shadow(0 0 5px var(--success)); }
-        .trust-label { font-size: 0.65rem; font-weight: 800; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; }
-        .trust-sub { font-size: 0.55rem; color: #64748b; }
+        .badge-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-size: 0.6rem; 
+            color: #94a3b8; 
+            font-weight: 700; 
+        }
 
         .whatsapp-btn {
             position: fixed; bottom: 20px; right: 20px; background: #25d366;
@@ -178,7 +177,7 @@
             <h1>Tecnologia que <span>eleva o nível.</span></h1>
             <img src="produto.PNG" class="main-product-img" onclick="abrirDestaque()" style="cursor:pointer">
             <div class="new-price">R$ 169,90</div>
-            <button class="btn-checkout" onclick="abrirDestaque()">Explorar Produto</button>
+            <button class="btn-checkout" onclick="abrirDestaque()">Ver Detalhes</button>
         </div>
     </section>
 
@@ -195,11 +194,11 @@
         </div>
     </section>
 
-    <div class="trust-section">
-        <div class="trust-item"><span class="trust-icon">🛡️</span><span class="trust-label">Site Blindado</span><span class="trust-sub">SSL 256-bit</span></div>
-        <div class="trust-item"><span class="trust-icon">💎</span><span class="trust-label">Qualidade Elite</span><span class="trust-sub">Selecionados</span></div>
-        <div class="trust-item"><span class="trust-icon">🚀</span><span class="trust-label">Entrega Rápida</span><span class="trust-sub">Monitorada</span></div>
-        <div class="trust-item"><span class="trust-icon">💳</span><span class="trust-label">Compra Segura</span><span class="trust-sub">InfinitePay</span></div>
+    <div class="security-footer">
+        <div class="badge-item"><span>🔒</span> SITE SEGURO</div>
+        <div class="badge-item"><span>✅</span> ORIGINAL</div>
+        <div class="badge-item"><span>📦</span> GARANTIA</div>
+        <div class="badge-item"><span>⚡</span> INFINITEPAY</div>
     </div>
 
     <a href="https://wa.me/5519993405480" class="whatsapp-btn"><span style="color:white">💬</span></a>
@@ -289,7 +288,7 @@
             const pb = { 
                 nome: 'Power Bank Elite 50k mAh', 
                 preco: 169.90, 
-                desc: 'Energia infinita para sua jornada. Com impressionantes 50.000mAh, este power bank carrega seu smartphone até 10 vezes. Possui visor digital inteligente de carga, lanterna de emergência potente e 3 saídas USB para carregar múltiplos aparelhos em simultâneo com tecnologia Fast Charge.', 
+                desc: 'Nunca mais fique sem bateria na estrada ou no trabalho. Com capacidade massiva de 50.000mAh, este Power Bank carrega seu smartphone até 10 vezes. Possui visor digital inteligente de carga, lanterna de emergência potente e 3 saídas USB para carregar múltiplos aparelhos em simultâneo com tecnologia Fast Charge.', 
                 img: 'produto.PNG', 
                 link: '#', 
                 cores: ['Branco'] 
