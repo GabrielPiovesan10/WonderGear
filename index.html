@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVEGAÇÃO CENTRALIZADA (LOGO NO TOPO, MENUS EMBAIXO) --- */
+        /* --- NAVEGAÇÃO CENTRALIZADA --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -98,11 +98,9 @@
         .modal-content {
             background: var(--card-bg); width: 100%; max-width: 450px;
             border-radius: 35px; padding: 30px; position: relative;
-            border: 1px solid rgba(255,255,255,0.1); 
-            overflow-y: auto; max-height: 90vh;
+            border: 1px solid rgba(255,255,255,0.1); overflow-y: auto; max-height: 90vh;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
-        /* Botão de fechar que não some */
         .close-modal { 
             position: absolute; top: 15px; right: 15px; 
             width: 35px; height: 35px; 
@@ -120,18 +118,28 @@
             border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-weight: 600;
         }
 
+        /* --- SEÇÃO SOBRE NÓS ORIGINAL --- */
+        .story-box {
+            background: linear-gradient(145deg, var(--card-bg), #111827);
+            padding: 40px 25px; border-radius: 35px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            position: relative; overflow: hidden;
+        }
+        .story-text { color: #94a3b8; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; text-align: left; }
+        .story-highlight { color: var(--primary); font-weight: 700; }
+
         /* --- SEGURANÇA ARRUMADA (GRID 2X2) --- */
-        .security-footer {
+        .trust-section {
             margin: 20px auto 40px; 
             padding: 25px;
             max-width: 600px;
-            background: rgba(30, 41, 59, 0.5);
+            background: var(--trust-bg);
             border-radius: 25px;
             border: 1px dashed rgba(255,255,255,0.1);
             display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
         }
         .trust-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
-        .trust-icon { font-size: 1.5rem; filter: drop-shadow(0 0 5px var(--primary)); }
+        .trust-icon { font-size: 1.5rem; filter: drop-shadow(0 0 5px var(--success)); }
         .trust-label { font-size: 0.65rem; font-weight: 800; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; }
         .trust-sub { font-size: 0.55rem; color: #64748b; }
 
@@ -186,34 +194,19 @@
     </section>
 
     <section id="sobre">
-        <div style="background: var(--card-bg); padding: 30px; border-radius: 30px;">
+        <div class="story-box">
             <h2 style="margin-bottom: 20px; font-weight: 900;">Nossa Jornada</h2>
-            <p style="margin-bottom: 20px; color: #94a3b8;">A <strong>WonderGear</strong> não é apenas uma loja; é a concretização de uma visão compartilhada. Fundada em 2026 pelo casal <strong>Gabriel e Welia</strong>, nossa marca nasceu da vontade de conectar pessoas a acessórios que definem o futuro.</p>
-            <p style="color: #94a3b8;">Localizada em Cordeirópolis, operamos com uma curadoria rigorosa. Cada item em nosso catálogo foi testado e aprovado por nós, garantindo que você receba tecnologia de elite com a confiança de quem entende do assunto.</p>
+            <p class="story-text">A <span class="story-highlight">WonderGear</span> não é apenas uma loja; é a concretização de uma visão compartilhada. Fundada em 2026 pelo casal <span class="story-highlight">Gabriel e Welia</span>, nossa marca nasceu da vontade de conectar pessoas a acessórios que definem o futuro.</p>
+            <p class="story-text">Localizada em Cordeirópolis, operamos com uma curadoria rigorosa. Cada item em nosso catálogo foi testado e aprovado por nós, garantindo que você receba tecnologia de elite com a confiança de quem entende do assunto.</p>
+            <p class="story-text">Para nós, cada cliente é parte da família WonderGear. <span class="story-highlight">Inovação, transparência e exclusividade</span> são os pilares que nos movem todos os dias.</p>
         </div>
     </section>
 
-    <div class="security-footer">
-        <div class="trust-item">
-            <span class="trust-icon">🛡️</span>
-            <span class="trust-label">Site Blindado</span>
-            <span class="trust-sub">SSL 256-bit</span>
-        </div>
-        <div class="trust-item">
-            <span class="trust-icon">💎</span>
-            <span class="trust-label">Qualidade Elite</span>
-            <span class="trust-sub">Selecionados</span>
-        </div>
-        <div class="trust-item">
-            <span class="trust-icon">🚀</span>
-            <span class="trust-label">Entrega Rápida</span>
-            <span class="trust-sub">Monitorada</span>
-        </div>
-        <div class="trust-item">
-            <span class="trust-icon">💳</span>
-            <span class="trust-label">Compra Segura</span>
-            <span class="trust-sub">InfinitePay</span>
-        </div>
+    <div class="trust-section">
+        <div class="trust-item"><span class="trust-icon">🛡️</span><span class="trust-label">Site Blindado</span><span class="trust-sub">SSL 256-bit</span></div>
+        <div class="trust-item"><span class="trust-icon">💎</span><span class="trust-label">Qualidade Elite</span><span class="trust-sub">Selecionados</span></div>
+        <div class="trust-item"><span class="trust-icon">🚀</span><span class="trust-label">Entrega Rápida</span><span class="trust-sub">Monitorada</span></div>
+        <div class="trust-item"><span class="trust-icon">💳</span><span class="trust-label">Compra Segura</span><span class="trust-sub">InfinitePay</span></div>
     </div>
 
     <a href="https://wa.me/5519993405480" class="whatsapp-btn"><span style="color:white">💬</span></a>
@@ -236,7 +229,7 @@
             {
                 nome: 'Projetor HY300 Smart Android 11 4K',
                 preco: 230.00,
-                desc: 'Transforme qualquer ambiente em um cinema de alta definição. O Projetor HY300 possui Android 11 nativo, resolução 4K e Wi-Fi de ultra velocidade. Com projeção nítida de até 130 polegadas, é a elite do entretenimento portátil.',
+                desc: 'Transforme qualquer ambiente em um cinema de alta definição. O Projetor HY300 possui Android 11 nativo (instale apps como Netflix e YouTube), resolução 4K, Wi-Fi 6 de ultra velocidade e Bluetooth 5.0. Com projeção nítida de até 130 polegadas e ajuste de ângulo flexível, é a elite do entretenimento portátil.',
                 img: 'produto_shopee.JPG',
                 link: 'https://invoice.infinitepay.io/wondergear/lWENlMIUz',
                 cores: ['Branco']
@@ -244,7 +237,7 @@
             {
                 nome: 'Cabo USB-C Turbo 60W Elite',
                 preco: 37.00,
-                desc: 'Potência máxima para seus dispositivos. Este cabo de 60W permite o carregamento ultra rápido de smartphones e notebooks. Construído com blindagem reforçada para garantir durabilidade extrema.',
+                desc: 'Potência máxima para seus dispositivos mais exigentes. Este cabo de 60W permite o carregamento ultra rápido de smartphones, tablets e até notebooks compatíveis. Construído com blindagem reforçada e conectores premium, garante transferência de dados estável e segurança total contra sobreaquecimento.',
                 img: 'cabo.JPG',
                 link: '#',
                 cores: ['Preto', 'Branco'],     
@@ -253,7 +246,7 @@
             {
                 nome: 'Escova 8 em 1 Multifuncional',
                 preco: 30.00,
-                desc: 'A ferramenta definitiva para quem cuida do setup. Kit completo para limpeza de teclados, fones e telas. Remove até a poeira mais difícil sem riscar seus equipamentos.',
+                desc: 'A ferramenta definitiva para quem cuida do setup. Este kit portátil 8 em 1 limpa com precisão teclados mecânicos, fones de ouvido, telas de smartphones e câmeras. Inclui extrator de teclas e escovas de alta densidade que removem até a poeira mais difícil sem riscar seus equipamentos.',
                 img: 'escova.JPG',
                 link: '#',
                 cores: ['Cor Aleatória']
@@ -261,7 +254,7 @@
             {
                 nome: 'Cabo OTG USB para iOS Lightning',
                 preco: 27.00,
-                desc: 'Expanda as capacidades do seu iPhone. Conecte pen drives, teclados ou mouses direto no sistema iOS. Alta velocidade de leitura e design ultra resistente.',
+                desc: 'Expanda instantaneamente as capacidades do seu iPhone ou iPad. Com este cabo OTG, você pode conectar pen drives para transferir fotos, usar teclados externos ou até conectar periféricos USB direto no sistema iOS. Alta velocidade de leitura e design ultra resistente.',
                 img: 'otg.JPG',
                 link: '#',
                 cores: ['Branco']
@@ -269,7 +262,7 @@
             {
                 nome: 'Suporte Elite Dobrável',
                 preco: 25.00,
-                desc: 'Ergonomia absoluta em um design compacto. Produzido em material premium, este suporte é ajustável em múltiplos ângulos. Ideal para videochamadas, garantindo estabilidade total.',
+                desc: 'Ergonomia absoluta em um design compacto. Produzido em material premium com base antiderrapante, este suporte é totalmente dobrável e ajustável em múltiplos ângulos. Ideal para videochamadas, estudos ou lazer, garantindo que seu celular ou tablet fique estável e na altura perfeita para sua visão.',
                 img: 'suporte.JPG',
                 link: '#',
                 cores: ['Preto', 'Branco', 'Rosa', 'Azul']
@@ -303,7 +296,7 @@
             const pb = { 
                 nome: 'Power Bank Elite 50k mAh', 
                 preco: 169.90, 
-                desc: 'Energia infinita para sua jornada. Com impressionantes 50.000mAh, carrega seu smartphone até 10 vezes. Possui visor digital e múltiplas saídas turbo.', 
+                desc: 'Energia infinita para sua jornada. Com impressionantes 50.000mAh, este power bank carrega seu smartphone até 10 vezes. Possui visor digital inteligente de carga, lanterna de emergência potente e 3 saídas USB para carregar múltiplos aparelhos em simultâneo com tecnologia Fast Charge.', 
                 img: 'produto.PNG', 
                 link: '#', 
                 cores: ['Branco'] 
