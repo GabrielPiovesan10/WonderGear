@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVEGAÇÃO CENTRALIZADA --- */
+        /* --- NAVEGAÇÃO CENTRALIZADA (LOGO NO TOPO, MENUS EMBAIXO) --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -68,18 +68,16 @@
             text-transform: uppercase; 
             cursor: pointer; 
             padding: 8px 12px;
-            border-radius: 8px;
             transition: 0.3s;
         }
         
         .menu-tabs span.active { 
             color: var(--white); 
-            background: rgba(124, 58, 237, 0.2);
             border-bottom: 2px solid var(--primary);
-            border-radius: 0;
         }
 
-        section { padding: 170px 20px 40px; display: none; min-height: 100vh; max-width: 600px; margin: 0 auto; }
+        /* Ajuste de espaço para o novo cabeçalho */
+        section { padding: 180px 20px 40px; display: none; min-height: 100vh; max-width: 600px; margin: 0 auto; }
         section.active { display: block; animation: slideUp 0.5s ease; }
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -114,6 +112,7 @@
         }
         .product-item img { width: 100%; border-radius: 12px; margin-bottom: 10px; height: 120px; object-fit: cover; }
 
+        /* MODAL */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 3000;
@@ -133,7 +132,7 @@
             border-radius: 10px; color: white; font-weight: 600;
         }
 
-        /* --- NEGÓCIO DE SEGURANÇA (ESTILO QUE VOCÊ GOSTOU) --- */
+        /* --- ESTILO DE SEGURANÇA ORIGINAL --- */
         .security-footer {
             margin: 20px auto 20px; 
             max-width: 600px;
